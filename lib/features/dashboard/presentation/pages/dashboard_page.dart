@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:tepat_customer_flutter/features/dashboard/presentation/widgets/best_engineer_widget.dart';
+import 'package:tepat_customer_flutter/features/dashboard/presentation/widgets/call_to_action_widget.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/widgets/work_type_widget.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -21,38 +23,9 @@ class DashboardPage extends StatelessWidget {
             const SizedBox(height: 24),
             const WorkTypeWidget(),
             const SizedBox(height: 24),
-            Column(
-              children: [
-                Text(
-                  'Butuh bantuan teknisi listrik? Daftar sekarang!',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Daftar sebagai pelanggan'),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Text(
-                    'Anda adalah teknisi listrik? Ayo bergabung menjadi mitra Tepat!',
-                    style: Theme.of(context).textTheme.headline2,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Daftar sebagai teknisi'),
-                  ),
-                ],
-              ),
-            ),
+            const BestEngineerWidget(),
+            const SizedBox(height: 24),
+            const CallToActionWidget()
           ],
         ),
       ),

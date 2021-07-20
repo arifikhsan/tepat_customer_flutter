@@ -34,7 +34,7 @@ class App extends StatelessWidget {
             color: primaryColor,
           ),
         ),
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blue,
         primaryTextTheme: TextTheme(
           headline6: TextStyle(color: primaryColor),
         ),
@@ -75,29 +75,29 @@ class App extends StatelessWidget {
                 headline1: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade800,
+                  color: Colors.blue.shade700,
                 ),
                 headline2: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade700,
+                  color: Colors.blue.shade600,
                 ),
                 headline3: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: Colors.blue.shade700,
+                  color: Colors.blue.shade600,
                 ),
-                bodyText1: const TextStyle(fontSize: 16),
+                bodyText1: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey.shade800,
+                  fontWeight: FontWeight.w500,
+                ),
+                bodyText2: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey.shade800,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-          // headline2: TextStyle(
-          //   fontSize: 54,
-          //   fontWeight: FontWeight.bold,
-          // ),
-          // headline3: TextStyle(
-          //   fontSize: 24,
-          //   fontWeight: FontWeight.bold,
-          // ),
-          // bodyText2: TextStyle(fontSize: 16),
         ),
       ),
       localizationsDelegates: const [
