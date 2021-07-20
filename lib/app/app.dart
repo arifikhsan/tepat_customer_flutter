@@ -19,6 +19,7 @@ class App extends StatelessWidget {
     var primaryColor = Colors.blue.shade600;
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // accentColor: const Color(0xFF13B9FF),
         appBarTheme: AppBarTheme(
@@ -74,16 +75,16 @@ class App extends StatelessWidget {
                 headline1: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade900,
+                  color: Colors.blue.shade800,
                 ),
                 headline2: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade800,
+                  color: Colors.blue.shade700,
                 ),
                 headline3: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.w600,
                   color: Colors.blue.shade700,
                 ),
                 bodyText1: const TextStyle(fontSize: 16),

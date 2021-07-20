@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:tepat_customer_flutter/features/dashboard/presentation/widgets/work_type_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -17,31 +18,9 @@ class DashboardPage extends StatelessWidget {
               'Temukan teknisi listrik yang cepat dan tanggap',
               style: Theme.of(context).textTheme.headline1,
             ),
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
-              'Jenis pekerjaan',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.blue.shade200,
-              ),
-              width: 100,
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const HeroIcon(HeroIcons.viewGridAdd),
-                  const SizedBox(height: 16),
-                  const Text('Pasang instalasi baru', style: TextStyle()),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
+            const SizedBox(height: 24),
+            const WorkTypeWidget(),
+            const SizedBox(height: 24),
             Column(
               children: [
                 Text(
