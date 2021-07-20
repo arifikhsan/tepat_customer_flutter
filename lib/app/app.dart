@@ -7,7 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tepat_customer_flutter/counter/counter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tepat_customer_flutter/features/home/presentation/pages/home_page.dart';
 import 'package:tepat_customer_flutter/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -15,17 +16,64 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var primaryColor = Colors.blue.shade600;
+
     return MaterialApp(
       theme: ThemeData(
-        accentColor: const Color(0xFF13B9FF),
-        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+        // accentColor: const Color(0xFF13B9FF),
+        appBarTheme: AppBarTheme(
+          elevation: 0,
+          centerTitle: true,
+          // foregroundColor: Colors.white,
+          backgroundColor: Colors.white,
+          actionsIconTheme: IconThemeData(
+            color: primaryColor,
+          ),
+          iconTheme: IconThemeData(
+            color: primaryColor,
+          ),
+        ),
+        primarySwatch: Colors.grey,
+        primaryTextTheme: TextTheme(
+          headline6: TextStyle(color: primaryColor),
+        ),
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: Colors.white,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        textTheme: GoogleFonts.interTextTheme(
+          Theme.of(context).textTheme.copyWith(
+                headline1: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue.shade900,
+                ),
+                headline6: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey.shade900,
+                ),
+                bodyText1: const TextStyle(fontSize: 16),
+              ),
+          // headline2: TextStyle(
+          //   fontSize: 54,
+          //   fontWeight: FontWeight.bold,
+          // ),
+          // headline3: TextStyle(
+          //   fontSize: 24,
+          //   fontWeight: FontWeight.bold,
+          // ),
+          // bodyText2: TextStyle(fontSize: 16),
+        ),
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const HomePage(),
     );
   }
 }
