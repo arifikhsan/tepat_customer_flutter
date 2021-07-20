@@ -47,10 +47,23 @@ class App extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(
-              horizontal: 30,
-              vertical: 10,
+              horizontal: 32,
+              vertical: 16,
             ),
             primary: Colors.blue.shade600, // background color
+            textStyle: const TextStyle(
+              color: Colors.white,
+              decorationColor: Colors.white,
+            ),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32,
+              vertical: 16,
+            ),
+            primary: Colors.blue.shade600,
             textStyle: const TextStyle(
               color: Colors.white,
               decorationColor: Colors.white,
@@ -60,10 +73,10 @@ class App extends StatelessWidget {
         textButtonTheme: TextButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
+              horizontal: 32,
+              vertical: 16,
             ),
-            // primary: Colors.blue.shade600, // background color
+            // primary: Colors.blue.shade600,
             // textStyle: const TextStyle(
             //   color: Colors.white,
             //   decorationColor: Colors.white,
@@ -73,12 +86,12 @@ class App extends StatelessWidget {
         textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme.copyWith(
                 headline1: TextStyle(
-                  fontSize: 32,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.blue.shade700,
                 ),
                 headline2: TextStyle(
-                  fontSize: 28,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.blue.shade600,
                 ),
