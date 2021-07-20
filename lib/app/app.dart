@@ -43,17 +43,48 @@ class App extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30,
+              vertical: 10,
+            ),
+            primary: Colors.blue.shade600, // background color
+            textStyle: const TextStyle(
+              color: Colors.white,
+              decorationColor: Colors.white,
+            ),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            // primary: Colors.blue.shade600, // background color
+            // textStyle: const TextStyle(
+            //   color: Colors.white,
+            //   decorationColor: Colors.white,
+            // ),
+          ),
+        ),
         textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme.copyWith(
                 headline1: TextStyle(
-                  fontSize: 36,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.blue.shade900,
                 ),
-                headline6: TextStyle(
-                  fontSize: 16,
+                headline2: TextStyle(
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade900,
+                  color: Colors.blue.shade800,
+                ),
+                headline3: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.blue.shade700,
                 ),
                 bodyText1: const TextStyle(fontSize: 16),
               ),
