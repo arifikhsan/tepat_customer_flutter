@@ -36,6 +36,7 @@ class BestEngineerWidget extends StatelessWidget {
             const SizedBox(width: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Pacc Iwan',

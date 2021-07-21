@@ -40,9 +40,13 @@ class App extends StatelessWidget {
         ),
         primaryColor: primaryColor,
         scaffoldBackgroundColor: Colors.white,
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
           elevation: 0,
+          unselectedItemColor: Colors.blue.shade400,
+          // unselectedLabelStyle: TextStyle(
+          //   color: Colors.blue.shade400,
+          // ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

@@ -100,28 +100,11 @@ class CallToActionWidget extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               OutlinedButton(
-                style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          side: const BorderSide(
-                            width: 4,
-                            color: Colors.red,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
                 onPressed: () {},
                 child: Row(
                   children: [
-                    const HeroIcon(
-                      HeroIcons.userAdd,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(width: 4),
                     Text(
-                      'Daftar sebagai teknisi',
+                      'Download aplikasi untuk teknisi',
                       style: Theme.of(context).textTheme.button?.copyWith(
                             color: Colors.white,
                           ),

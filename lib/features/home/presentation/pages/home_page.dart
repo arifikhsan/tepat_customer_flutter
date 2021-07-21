@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:tepat_customer_flutter/features/core/tepat_logo_widget.dart';
-import 'package:tepat_customer_flutter/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:tepat_customer_flutter/features/dashboard/presentation/screens/dashboard_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,9 +13,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedPageIndex = 0;
   static const List<Widget> pages = <Widget>[
-    DashboardPage(),
-    Text('Index 1: Panduan'),
-    Text('Index 2: Pengaturan'),
+    DashboardScreen(),
+    Text('Index 2: Pekerjaan saya'),
+    Text('Index 3: Teknisi'),
+    Text('Index 4: Pengaturan'),
   ];
 
   void onBottomNavigationTapped(int index) {
@@ -51,8 +52,12 @@ class _HomePageState extends State<HomePage> {
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: HeroIcon(HeroIcons.academicCap),
-            label: 'Panduan',
+            icon: HeroIcon(HeroIcons.bookOpen),
+            label: 'Pekerjaan Saya',
+          ),
+          BottomNavigationBarItem(
+            icon: HeroIcon(HeroIcons.userGroup),
+            label: 'Daftar Teknisi',
           ),
           BottomNavigationBarItem(
             icon: HeroIcon(HeroIcons.adjustments),

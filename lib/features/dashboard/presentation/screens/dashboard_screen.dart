@@ -3,8 +3,8 @@ import 'package:tepat_customer_flutter/features/dashboard/presentation/widgets/b
 import 'package:tepat_customer_flutter/features/dashboard/presentation/widgets/call_to_action_widget.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/widgets/work_type_widget.dart';
 
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({Key? key}) : super(key: key);
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
