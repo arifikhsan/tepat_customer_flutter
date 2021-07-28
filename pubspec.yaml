@@ -25,6 +25,7 @@ dependencies:
   injectable: ^1.4.1
   intl: ^0.17.0
   meta: ^1.7.0
+  page_transition: ^2.0.2
 
 dev_dependencies:
   flutter_test:
