@@ -161,6 +161,8 @@ flutter build apk --debug --flavor development --target lib/main_development.dar
 flutter build apk --release --flavor development --target lib/main_development.dart
 
 flutter pub run build_runner watch --delete-conflicting-outputs
+flutter pub run build_runner build --delete-conflicting-outputs
+
 ```
 
 > Staging

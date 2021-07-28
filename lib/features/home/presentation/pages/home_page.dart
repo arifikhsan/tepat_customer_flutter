@@ -1,13 +1,30 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:tepat_customer_flutter/config/injection/injection.dart';
 import 'package:tepat_customer_flutter/features/core/tepat_logo_widget.dart';
+import 'package:tepat_customer_flutter/features/dashboard/presentation/bloc/best_engineer_bloc.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/screens/dashboard_screen.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulWidget implements AutoRouteWrapper {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<BestEngineerBloc>(
+          create: (context) => getIt<BestEngineerBloc>()
+            ..add(const BestEngineerEvent.watchAllStarted()),
+        ),
+      ],
+      child: this,
+    );
+  }
 }
 
 class _HomePageState extends State<HomePage> {

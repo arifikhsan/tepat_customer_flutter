@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:tepat_customer_flutter/config/injection/injection.dart';
+import 'package:tepat_customer_flutter/features/dashboard/presentation/bloc/best_engineer_bloc.dart';
 
 class BestEngineerWidget extends StatelessWidget {
   const BestEngineerWidget({Key? key}) : super(key: key);
@@ -13,7 +16,23 @@ class BestEngineerWidget extends StatelessWidget {
           'Teknisi terbaik minggu ini',
           style: Theme.of(context).textTheme.headline3,
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
+        BlocProvider<BestEngineerBloc>(
+          create: (context) => getIt<BestEngineerBloc>()
+            ..add(const BestEngineerEvent.watchAllStarted()),
+          child: Builder(builder: (context) {
+            return BlocBuilder<BestEngineerBloc, BestEngineerState>(
+              builder: (context, state) {
+                return Container();
+              },
+            );
+          }),
+        ),
+        // BlocBuilder<BestEngineerBloc, BestEngineerState>(
+        //   builder: (context, state) {
+        //     return Container();
+        //   },
+        // ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -49,11 +68,16 @@ class BestEngineerWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     const Text('5.0'),
                     const SizedBox(width: 4),
-                    const HeroIcon(HeroIcons.star, size: 14),
+                    const HeroIcon(
+                      HeroIcons.star,
+                      size: 14,
+                      color: Colors.blue,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 4),
@@ -65,7 +89,9 @@ class BestEngineerWidget extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            const Expanded(child: SizedBox.shrink(),),
+            const Expanded(
+              child: SizedBox.shrink(),
+            ),
             TextButton(
               onPressed: () {},
               child: const Text('Lihat semua →'),
