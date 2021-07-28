@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(child: pages.elementAt(selectedPageIndex)),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: selectedPageIndex,
         onTap: onBottomNavigationTapped,
         selectedItemColor: Theme.of(context).primaryColor,
@@ -50,18 +51,22 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: HeroIcon(HeroIcons.home),
             label: 'Beranda',
+            tooltip: 'Beranda',
           ),
           BottomNavigationBarItem(
             icon: HeroIcon(HeroIcons.bookOpen),
-            label: 'Pekerjaan Saya',
+            label: 'Pekerjaan',
+            tooltip: 'Pekerjaan',
           ),
           BottomNavigationBarItem(
             icon: HeroIcon(HeroIcons.userGroup),
-            label: 'Daftar Teknisi',
+            label: 'Teknisi',
+            tooltip: 'Teknisi',
           ),
           BottomNavigationBarItem(
             icon: HeroIcon(HeroIcons.adjustments),
             label: 'Pengaturan',
+            tooltip: 'Pengaturan',
           ),
         ],
       ),

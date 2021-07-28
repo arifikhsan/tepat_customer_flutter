@@ -43,7 +43,7 @@ class App extends StatelessWidget {
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
           elevation: 0,
-          unselectedItemColor: Colors.blue.shade400,
+          unselectedItemColor: Colors.blue.shade300,
           // unselectedLabelStyle: TextStyle(
           //   color: Colors.blue.shade400,
           // ),
