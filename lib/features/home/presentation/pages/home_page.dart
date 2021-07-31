@@ -1,44 +1,45 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:tepat_customer_flutter/config/injection/injection.dart';
 import 'package:tepat_customer_flutter/features/core/tepat_logo_widget.dart';
-import 'package:tepat_customer_flutter/features/dashboard/presentation/bloc/best_engineer_bloc.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:tepat_customer_flutter/features/engineers/presentation/screens/engineers_screen.dart';
 
-class HomePage extends StatefulWidget implements AutoRouteWrapper {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<BestEngineerBloc>(
-          create: (context) => getIt<BestEngineerBloc>()
-            ..add(const BestEngineerEvent.watchAllStarted()),
-        ),
-      ],
-      child: this,
-    );
-  }
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedPageIndex = 0;
+  PageController pageController = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
+
+  int bottomSelectedIndex = 0;
+
   static const List<Widget> pages = <Widget>[
     DashboardScreen(),
-    Text('Index 2: Pekerjaan saya'),
-    Text('Index 3: Teknisi'),
+    Text('Index 2: Penawaran'),
+    EngineersScreen(),
     Text('Index 4: Pengaturan'),
   ];
 
+  void pageChanged(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+    });
+  }
+
   void onBottomNavigationTapped(int index) {
     setState(() {
-      selectedPageIndex = index;
+      bottomSelectedIndex = index;
+      pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.ease,
+      );
     });
   }
 
@@ -58,10 +59,15 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: Center(child: pages.elementAt(selectedPageIndex)),
+      // body: Center(child: pages.elementAt(selectedPageIndex)),
+      body: PageView(
+        controller: pageController,
+        onPageChanged: pageChanged,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: selectedPageIndex,
+        currentIndex: bottomSelectedIndex,
         onTap: onBottomNavigationTapped,
         selectedItemColor: Theme.of(context).primaryColor,
         items: const [
@@ -72,8 +78,8 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: HeroIcon(HeroIcons.bookOpen),
-            label: 'Pekerjaan',
-            tooltip: 'Pekerjaan',
+            label: 'Penawaran',
+            tooltip: 'Penawaran',
           ),
           BottomNavigationBarItem(
             icon: HeroIcon(HeroIcons.userGroup),
