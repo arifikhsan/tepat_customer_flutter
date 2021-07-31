@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_model.dart';
-import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository_impl.dart';
 import 'package:tepat_customer_flutter/features/dashboard/domain/failure/best_engineer_failure.dart';
 
@@ -20,8 +18,7 @@ class BestEngineerBloc extends Bloc<BestEngineerEvent, BestEngineerState> {
   }) : super(const BestEngineerState.initial());
 
   final DashboardRepositoryImpl repository;
-  StreamSubscription<Either<BestEngineerFailure, List<BestEngineerModel>>>?
-      _engineerSubscription;
+  StreamSubscription<List<BestEngineerModel>>? _engineerSubscription;
 
   @override
   Stream<BestEngineerState> mapEventToState(
@@ -32,15 +29,14 @@ class BestEngineerBloc extends Bloc<BestEngineerEvent, BestEngineerState> {
         print('===> watchAllStarted');
         yield const BestEngineerState.loading();
         await _engineerSubscription?.cancel();
-        _engineerSubscription = repository.watchBestEngineers().listen(
-            (engineers) =>
-                add(BestEngineerEvent.bestEngineersReceived(engineers)));
+        _engineerSubscription = repository
+            .watchBestEngineers()
+            .listen((e) => add(BestEngineerEvent.bestEngineersReceived(e)));
+        // yield BestEngineerState.loadSuccess(engineers);
       },
       bestEngineersReceived: (e) async* {
         print('aaaa');
-        yield e.failureOrEngineers.fold(
-            (failure) => BestEngineerState.loadFailure(failure),
-            (engineers) => BestEngineerState.loadSuccess(engineers));
+        yield BestEngineerState.loadSuccess(e.engineers);
       },
     );
   }

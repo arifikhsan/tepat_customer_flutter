@@ -64,8 +64,8 @@ class App extends StatelessWidget {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             padding: const EdgeInsets.symmetric(
-              horizontal: 32,
-              vertical: 16,
+              horizontal: 16,
+              vertical: 8,
             ),
             primary: Colors.blue.shade600,
             textStyle: const TextStyle(
@@ -77,8 +77,8 @@ class App extends StatelessWidget {
         textButtonTheme: TextButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(
-              horizontal: 32,
-              vertical: 16,
+              horizontal: 16,
+              vertical: 8,
             ),
             // primary: Colors.blue.shade600,
             // textStyle: const TextStyle(

@@ -21,9 +21,9 @@ class _$BestEngineerEventTearOff {
   }
 
   _BestEngineersReceived bestEngineersReceived(
-      Either<BestEngineerFailure, List<BestEngineerModel>> failureOrEngineers) {
+      List<BestEngineerModel> engineers) {
     return _BestEngineersReceived(
-      failureOrEngineers,
+      engineers,
     );
   }
 }
@@ -36,19 +36,14 @@ mixin _$BestEngineerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
-    required TResult Function(
-            Either<BestEngineerFailure, List<BestEngineerModel>>
-                failureOrEngineers)
+    required TResult Function(List<BestEngineerModel> engineers)
         bestEngineersReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function(
-            Either<BestEngineerFailure, List<BestEngineerModel>>
-                failureOrEngineers)?
-        bestEngineersReceived,
+    TResult Function(List<BestEngineerModel> engineers)? bestEngineersReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,9 +121,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
-    required TResult Function(
-            Either<BestEngineerFailure, List<BestEngineerModel>>
-                failureOrEngineers)
+    required TResult Function(List<BestEngineerModel> engineers)
         bestEngineersReceived,
   }) {
     return watchAllStarted();
@@ -138,10 +131,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function(
-            Either<BestEngineerFailure, List<BestEngineerModel>>
-                failureOrEngineers)?
-        bestEngineersReceived,
+    TResult Function(List<BestEngineerModel> engineers)? bestEngineersReceived,
     required TResult orElse(),
   }) {
     if (watchAllStarted != null) {
@@ -183,9 +173,7 @@ abstract class _$BestEngineersReceivedCopyWith<$Res> {
   factory _$BestEngineersReceivedCopyWith(_BestEngineersReceived value,
           $Res Function(_BestEngineersReceived) then) =
       __$BestEngineersReceivedCopyWithImpl<$Res>;
-  $Res call(
-      {Either<BestEngineerFailure, List<BestEngineerModel>>
-          failureOrEngineers});
+  $Res call({List<BestEngineerModel> engineers});
 }
 
 /// @nodoc
@@ -201,13 +189,13 @@ class __$BestEngineersReceivedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? failureOrEngineers = freezed,
+    Object? engineers = freezed,
   }) {
     return _then(_BestEngineersReceived(
-      failureOrEngineers == freezed
-          ? _value.failureOrEngineers
-          : failureOrEngineers // ignore: cast_nullable_to_non_nullable
-              as Either<BestEngineerFailure, List<BestEngineerModel>>,
+      engineers == freezed
+          ? _value.engineers
+          : engineers // ignore: cast_nullable_to_non_nullable
+              as List<BestEngineerModel>,
     ));
   }
 }
@@ -215,29 +203,28 @@ class __$BestEngineersReceivedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_BestEngineersReceived implements _BestEngineersReceived {
-  const _$_BestEngineersReceived(this.failureOrEngineers);
+  const _$_BestEngineersReceived(this.engineers);
 
   @override
-  final Either<BestEngineerFailure, List<BestEngineerModel>> failureOrEngineers;
+  final List<BestEngineerModel> engineers;
 
   @override
   String toString() {
-    return 'BestEngineerEvent.bestEngineersReceived(failureOrEngineers: $failureOrEngineers)';
+    return 'BestEngineerEvent.bestEngineersReceived(engineers: $engineers)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _BestEngineersReceived &&
-            (identical(other.failureOrEngineers, failureOrEngineers) ||
+            (identical(other.engineers, engineers) ||
                 const DeepCollectionEquality()
-                    .equals(other.failureOrEngineers, failureOrEngineers)));
+                    .equals(other.engineers, engineers)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(failureOrEngineers);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(engineers);
 
   @JsonKey(ignore: true)
   @override
@@ -249,26 +236,21 @@ class _$_BestEngineersReceived implements _BestEngineersReceived {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
-    required TResult Function(
-            Either<BestEngineerFailure, List<BestEngineerModel>>
-                failureOrEngineers)
+    required TResult Function(List<BestEngineerModel> engineers)
         bestEngineersReceived,
   }) {
-    return bestEngineersReceived(failureOrEngineers);
+    return bestEngineersReceived(engineers);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function(
-            Either<BestEngineerFailure, List<BestEngineerModel>>
-                failureOrEngineers)?
-        bestEngineersReceived,
+    TResult Function(List<BestEngineerModel> engineers)? bestEngineersReceived,
     required TResult orElse(),
   }) {
     if (bestEngineersReceived != null) {
-      return bestEngineersReceived(failureOrEngineers);
+      return bestEngineersReceived(engineers);
     }
     return orElse();
   }
@@ -298,12 +280,10 @@ class _$_BestEngineersReceived implements _BestEngineersReceived {
 }
 
 abstract class _BestEngineersReceived implements BestEngineerEvent {
-  const factory _BestEngineersReceived(
-      Either<BestEngineerFailure, List<BestEngineerModel>>
-          failureOrEngineers) = _$_BestEngineersReceived;
+  const factory _BestEngineersReceived(List<BestEngineerModel> engineers) =
+      _$_BestEngineersReceived;
 
-  Either<BestEngineerFailure, List<BestEngineerModel>> get failureOrEngineers =>
-      throw _privateConstructorUsedError;
+  List<BestEngineerModel> get engineers => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$BestEngineersReceivedCopyWith<_BestEngineersReceived> get copyWith =>
       throw _privateConstructorUsedError;
