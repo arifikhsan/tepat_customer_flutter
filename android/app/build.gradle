@@ -97,8 +97,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
         debug {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             signingConfig signingConfigs.debug
         }
     }
