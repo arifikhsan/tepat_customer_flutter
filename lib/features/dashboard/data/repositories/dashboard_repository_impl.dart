@@ -10,7 +10,11 @@ class DashboardRepositoryImpl implements DashboardRepository {
 
   @override
   Stream<List<BestEngineerModel>> watchBestEngineers() {
-    return notes.snapshots().map((snapshot) {
+    return notes
+        .where('roles', arrayContains: 'engineer')
+        .limit(3)
+        .snapshots()
+        .map((snapshot) {
       return snapshot.docs.map(BestEngineerModel.fromDocumentSnapshot).toList();
     });
   }

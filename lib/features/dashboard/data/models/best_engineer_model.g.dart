@@ -14,6 +14,8 @@ _$_BestEngineerModel _$_$_BestEngineerModelFromJson(Map<String, dynamic> json) {
         .map(
             (e) => BestEngineerAddressModel.fromJson(e as Map<String, dynamic>))
         .toList(),
+    jobReview: BestEngineerJobReviewModel.fromJson(
+        json['job_review'] as Map<String, dynamic>),
   );
 }
 
@@ -23,4 +25,5 @@ Map<String, dynamic> _$_$_BestEngineerModelToJson(
       'id': instance.id,
       'name': instance.name,
       'addresses': instance.addresses,
+      'job_review': instance.jobReview,
     };

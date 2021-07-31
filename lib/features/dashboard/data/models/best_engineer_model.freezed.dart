@@ -23,11 +23,13 @@ class _$BestEngineerModelTearOff {
   _BestEngineerModel call(
       {required String id,
       required String name,
-      required List<BestEngineerAddressModel> addresses}) {
+      required List<BestEngineerAddressModel> addresses,
+      required BestEngineerJobReviewModel jobReview}) {
     return _BestEngineerModel(
       id: id,
       name: name,
       addresses: addresses,
+      jobReview: jobReview,
     );
   }
 
@@ -45,6 +47,8 @@ mixin _$BestEngineerModel {
   String get name => throw _privateConstructorUsedError;
   List<BestEngineerAddressModel> get addresses =>
       throw _privateConstructorUsedError;
+  BestEngineerJobReviewModel get jobReview =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +61,13 @@ abstract class $BestEngineerModelCopyWith<$Res> {
   factory $BestEngineerModelCopyWith(
           BestEngineerModel value, $Res Function(BestEngineerModel) then) =
       _$BestEngineerModelCopyWithImpl<$Res>;
-  $Res call({String id, String name, List<BestEngineerAddressModel> addresses});
+  $Res call(
+      {String id,
+      String name,
+      List<BestEngineerAddressModel> addresses,
+      BestEngineerJobReviewModel jobReview});
+
+  $BestEngineerJobReviewModelCopyWith<$Res> get jobReview;
 }
 
 /// @nodoc
@@ -74,6 +84,7 @@ class _$BestEngineerModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? addresses = freezed,
+    Object? jobReview = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -88,7 +99,18 @@ class _$BestEngineerModelCopyWithImpl<$Res>
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
               as List<BestEngineerAddressModel>,
+      jobReview: jobReview == freezed
+          ? _value.jobReview
+          : jobReview // ignore: cast_nullable_to_non_nullable
+              as BestEngineerJobReviewModel,
     ));
+  }
+
+  @override
+  $BestEngineerJobReviewModelCopyWith<$Res> get jobReview {
+    return $BestEngineerJobReviewModelCopyWith<$Res>(_value.jobReview, (value) {
+      return _then(_value.copyWith(jobReview: value));
+    });
   }
 }
 
@@ -99,7 +121,14 @@ abstract class _$BestEngineerModelCopyWith<$Res>
           _BestEngineerModel value, $Res Function(_BestEngineerModel) then) =
       __$BestEngineerModelCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, List<BestEngineerAddressModel> addresses});
+  $Res call(
+      {String id,
+      String name,
+      List<BestEngineerAddressModel> addresses,
+      BestEngineerJobReviewModel jobReview});
+
+  @override
+  $BestEngineerJobReviewModelCopyWith<$Res> get jobReview;
 }
 
 /// @nodoc
@@ -118,6 +147,7 @@ class __$BestEngineerModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? addresses = freezed,
+    Object? jobReview = freezed,
   }) {
     return _then(_BestEngineerModel(
       id: id == freezed
@@ -132,6 +162,10 @@ class __$BestEngineerModelCopyWithImpl<$Res>
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
               as List<BestEngineerAddressModel>,
+      jobReview: jobReview == freezed
+          ? _value.jobReview
+          : jobReview // ignore: cast_nullable_to_non_nullable
+              as BestEngineerJobReviewModel,
     ));
   }
 }
@@ -140,7 +174,10 @@ class __$BestEngineerModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BestEngineerModel implements _BestEngineerModel {
   const _$_BestEngineerModel(
-      {required this.id, required this.name, required this.addresses});
+      {required this.id,
+      required this.name,
+      required this.addresses,
+      required this.jobReview});
 
   factory _$_BestEngineerModel.fromJson(Map<String, dynamic> json) =>
       _$_$_BestEngineerModelFromJson(json);
@@ -151,10 +188,12 @@ class _$_BestEngineerModel implements _BestEngineerModel {
   final String name;
   @override
   final List<BestEngineerAddressModel> addresses;
+  @override
+  final BestEngineerJobReviewModel jobReview;
 
   @override
   String toString() {
-    return 'BestEngineerModel(id: $id, name: $name, addresses: $addresses)';
+    return 'BestEngineerModel(id: $id, name: $name, addresses: $addresses, jobReview: $jobReview)';
   }
 
   @override
@@ -167,7 +206,10 @@ class _$_BestEngineerModel implements _BestEngineerModel {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.addresses, addresses) ||
                 const DeepCollectionEquality()
-                    .equals(other.addresses, addresses)));
+                    .equals(other.addresses, addresses)) &&
+            (identical(other.jobReview, jobReview) ||
+                const DeepCollectionEquality()
+                    .equals(other.jobReview, jobReview)));
   }
 
   @override
@@ -175,7 +217,8 @@ class _$_BestEngineerModel implements _BestEngineerModel {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(addresses);
+      const DeepCollectionEquality().hash(addresses) ^
+      const DeepCollectionEquality().hash(jobReview);
 
   @JsonKey(ignore: true)
   @override
@@ -190,10 +233,10 @@ class _$_BestEngineerModel implements _BestEngineerModel {
 
 abstract class _BestEngineerModel implements BestEngineerModel {
   const factory _BestEngineerModel(
-          {required String id,
-          required String name,
-          required List<BestEngineerAddressModel> addresses}) =
-      _$_BestEngineerModel;
+      {required String id,
+      required String name,
+      required List<BestEngineerAddressModel> addresses,
+      required BestEngineerJobReviewModel jobReview}) = _$_BestEngineerModel;
 
   factory _BestEngineerModel.fromJson(Map<String, dynamic> json) =
       _$_BestEngineerModel.fromJson;
@@ -204,6 +247,9 @@ abstract class _BestEngineerModel implements BestEngineerModel {
   String get name => throw _privateConstructorUsedError;
   @override
   List<BestEngineerAddressModel> get addresses =>
+      throw _privateConstructorUsedError;
+  @override
+  BestEngineerJobReviewModel get jobReview =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
