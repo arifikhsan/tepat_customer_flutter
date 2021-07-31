@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_model.dart';
@@ -33,7 +32,6 @@ class BestEngineerBloc extends Bloc<BestEngineerEvent, BestEngineerState> {
             .listen((e) => add(BestEngineerEvent.bestEngineersReceived(e)));
       },
       bestEngineersReceived: (e) async* {
-        print(e.engineers);
         yield BestEngineerState.loadSuccess(e.engineers);
       },
     );
