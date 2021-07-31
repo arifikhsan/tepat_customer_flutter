@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   static const List<Widget> pages = <Widget>[
     DashboardScreen(),
-    Text('Index 2: Penawaran'),
+    Text('Index 2: Offers'),
     EngineersScreen(),
     Text('Index 4: Pengaturan'),
   ];

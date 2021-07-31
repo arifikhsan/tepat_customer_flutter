@@ -6,11 +6,11 @@ import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dash
 
 @injectable
 class DashboardRepositoryImpl implements DashboardRepository {
-  final notes = getIt<FirebaseFirestore>().collection('users');
+  final users = getIt<FirebaseFirestore>().collection('users');
 
   @override
   Stream<List<BestEngineerModel>> watchBestEngineers() {
-    return notes
+    return users
         .where('roles', arrayContains: 'engineer')
         .limit(3)
         .snapshots()
