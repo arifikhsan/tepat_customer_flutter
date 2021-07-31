@@ -9,27 +9,15 @@ class BestEngineerModel with _$BestEngineerModel {
   const factory BestEngineerModel({
     required String id,
     required String name,
-    required String city,
-    required double rating,
-    required int workDone,
   }) = _BestEngineerModel;
 
   factory BestEngineerModel.fromJson(Map<String, dynamic> json) =>
       _$BestEngineerModelFromJson(json);
 
-  factory BestEngineerModel.fromFirestore(DocumentSnapshot doc) {
-    return BestEngineerModel.fromJson(doc.data() as Map<String, dynamic>);
-  }
-}
+  static BestEngineerModel fromDocumentSnapshot(DocumentSnapshot document) {
+    final data = document.data() as Map<String, dynamic>;
+    data['id'] = document.id;
 
-extension BestEngineerModelX on BestEngineerModel {
-  BestEngineerModel toDomain() {
-    return BestEngineerModel(
-      id: id,
-      name: name,
-      city: city,
-      rating: rating,
-      workDone: workDone,
-    );
+    return BestEngineerModel.fromJson(data);
   }
 }

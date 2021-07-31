@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_model.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository.dart';
+import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository_impl.dart';
 import 'package:tepat_customer_flutter/features/dashboard/domain/failure/best_engineer_failure.dart';
 
 part 'best_engineer_event.dart';
@@ -17,30 +19,35 @@ class BestEngineerBloc extends Bloc<BestEngineerEvent, BestEngineerState> {
     required this.repository,
   }) : super(const BestEngineerState.initial());
 
-  final DashboardRepository repository;
+  final DashboardRepositoryImpl repository;
   StreamSubscription<Either<BestEngineerFailure, List<BestEngineerModel>>>?
-      _engineerStreamSubscription;
+      _engineerSubscription;
 
   @override
   Stream<BestEngineerState> mapEventToState(
     BestEngineerEvent event,
   ) async* {
-    yield* event.map(watchAllStarted: (e) async* {
-      yield const BestEngineerState.loading();
-      await _engineerStreamSubscription?.cancel();
-      _engineerStreamSubscription = repository.watchBestEngineers().listen(
-          (engineers) =>
-              add(BestEngineerEvent.bestEngineersReceived(engineers)));
-    }, bestEngineersReceived: (e) async* {
-      yield e.failureOrEngineers.fold(
-          (failure) => BestEngineerState.loadFailure(failure),
-          (engineers) => BestEngineerState.loadSuccess(engineers));
-    });
+    yield* event.map(
+      watchAllStarted: (e) async* {
+        print('===> watchAllStarted');
+        yield const BestEngineerState.loading();
+        await _engineerSubscription?.cancel();
+        _engineerSubscription = repository.watchBestEngineers().listen(
+            (engineers) =>
+                add(BestEngineerEvent.bestEngineersReceived(engineers)));
+      },
+      bestEngineersReceived: (e) async* {
+        print('aaaa');
+        yield e.failureOrEngineers.fold(
+            (failure) => BestEngineerState.loadFailure(failure),
+            (engineers) => BestEngineerState.loadSuccess(engineers));
+      },
+    );
   }
 
   @override
   Future<void> close() async {
-    await _engineerStreamSubscription?.cancel();
+    await _engineerSubscription?.cancel();
     return super.close();
   }
 }

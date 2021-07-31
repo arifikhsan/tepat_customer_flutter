@@ -7,19 +7,20 @@ import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engin
 import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository.dart';
 import 'package:tepat_customer_flutter/features/dashboard/domain/failure/best_engineer_failure.dart';
 
-@Injectable(as: DashboardRepository)
+@injectable
 class DashboardRepositoryImpl implements DashboardRepository {
+  final notes = FirebaseFirestore.instance.collection('users');
+
   @override
   Stream<Either<BestEngineerFailure, List<BestEngineerModel>>>
-      watchBestEngineers() {
-    return getIt<FirebaseFirestore>()
-        .collection('users')
-        .snapshots()
-        .map((snapshot) => right<BestEngineerFailure, List<BestEngineerModel>>(
-            snapshot.docs
-                .map((doc) => BestEngineerModel.fromFirestore(doc).toDomain())
-                .toList()))
-        .handleError((e) {
+      watchBestEngineers() async* {
+    notes.snapshots().map(
+      (snapshot) {
+        return right(
+          snapshot.docs.map(BestEngineerModel.fromDocumentSnapshot).toList(),
+        );
+      },
+    ).handleError((e) {
       if (e is PlatformException && e.message!.contains('PERMISSION_DENIED')) {
         return left(const BestEngineerFailure.insufficientPermissions());
       } else {

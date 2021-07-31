@@ -152,51 +152,6 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 }
 ```
 
-### Build APK
-
-> Development
-
-```sh
-flutter build apk --debug --flavor development --target lib/main_development.dart
-flutter build apk --release --flavor development --target lib/main_development.dart
-
-flutter pub run build_runner watch --delete-conflicting-outputs
-flutter pub run build_runner build --delete-conflicting-outputs
-
-```
-
-> Staging
-
-```sh
-flutter build apk --debug --flavor staging --target lib/main_staging.dart
-flutter build apk --release --flavor staging --target lib/main_staging.dart
-```
-
-> Production
-
-```sh
-flutter build apk --debug --flavor production --target lib/main_production.dart
-flutter build apk --release --flavor production --target lib/main_production.dart
-```
-
-### Build APK analyze
-
-```sh
-flutter build apk --release --flavor production --target lib/main_production.dart --target-platform android-arm64 --analyze-size
-```
-
-### Change package name
-
-```bash
-flutter pub run change_app_package_name:main com.new.package.name
-```
-
-### Gradlew sync
-
-```bat
-android\gradlew --refresh-dependencies
-```
-
 [coverage_badge]: coverage_badge.svg
 [flutter_localizations_link]: https://api.flutter.dev/flutter/flutter_localizations/flutter_localizations-library.html
 [internationalization_link]: https://flutter.dev/docs/development/accessibility-and-localization/internationalization

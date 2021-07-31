@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class RegisterModule {
-  @lazySingleton
+  @singleton
   FirebaseFirestore get firestore => FirebaseFirestore.instance;
 
   // @lazySingleton
