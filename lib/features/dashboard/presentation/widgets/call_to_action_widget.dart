@@ -38,9 +38,7 @@ class CallToActionWidget extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               OutlinedButton(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 child: Row(
                   children: [
                     const HeroIcon(
