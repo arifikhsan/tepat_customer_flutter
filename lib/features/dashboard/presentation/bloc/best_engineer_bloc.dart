@@ -26,16 +26,14 @@ class BestEngineerBloc extends Bloc<BestEngineerEvent, BestEngineerState> {
   ) async* {
     yield* event.map(
       watchAllStarted: (e) async* {
-        print('===> watchAllStarted');
         yield const BestEngineerState.loading();
         await _engineerSubscription?.cancel();
         _engineerSubscription = repository
             .watchBestEngineers()
             .listen((e) => add(BestEngineerEvent.bestEngineersReceived(e)));
-        // yield BestEngineerState.loadSuccess(engineers);
       },
       bestEngineersReceived: (e) async* {
-        print('aaaa');
+        print(e.engineers);
         yield BestEngineerState.loadSuccess(e.engineers);
       },
     );

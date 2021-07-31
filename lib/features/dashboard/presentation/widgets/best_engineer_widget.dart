@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:tepat_customer_flutter/config/injection/injection.dart';
+import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_address_model.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_model.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository_impl.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/bloc/best_engineer_bloc.dart';
@@ -34,10 +35,13 @@ class BestEngineerWidget extends StatelessWidget {
                     ),
                     error: (_) => const Text('error'),
                     loadSuccess: (state) {
-                      return ListView.builder(
+                      return ListView.separated(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: state.engineers.length,
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(height: 16);
+                        },
                         itemBuilder: (context, index) {
                           final engineer = state.engineers[index];
 
@@ -46,13 +50,6 @@ class BestEngineerWidget extends StatelessWidget {
                           );
                         },
                       );
-                      // return Column(
-                      //   children: state.engineers.map((engineer) {
-                      //     return _BestEngineerCard(
-                      //       engineer: engineer,
-                      //     );
-                      //   }).toList(),
-                      // );
                     },
                     loadFailure: (state) => state.engineersFailure.map(
                       unexpected: (_) => const Text('unexpected'),
@@ -91,6 +88,10 @@ class _BestEngineerCard extends StatelessWidget {
 
   final BestEngineerModel engineer;
 
+  BestEngineerAddressModel primaryAddress() {
+    return engineer.addresses.firstWhere((address) => address.primary == true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -122,26 +123,49 @@ class _BestEngineerCard extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText1,
             ),
             const SizedBox(height: 8),
-            Text(
-              'Ngluwar, Magelang',
-              style: Theme.of(context).textTheme.bodyText2,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                const HeroIcon(
+                  HeroIcons.map,
+                  size: 14,
+                  color: Colors.blue,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  '${primaryAddress().subdistrict}, ${primaryAddress().city}',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ],
             ),
             const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                const Text('5.0'),
-                const SizedBox(width: 4),
                 const HeroIcon(
                   HeroIcons.star,
                   size: 14,
                   color: Colors.blue,
                 ),
+                const SizedBox(width: 4),
+                const Text('5.0'),
               ],
             ),
             const SizedBox(height: 4),
-            const Text('25 pekerjaan selesai'),
+            Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                const HeroIcon(
+                  HeroIcons.briefcase,
+                  size: 14,
+                  color: Colors.blue,
+                ),
+                const SizedBox(width: 4),
+                const Text('25 pekerjaan selesai'),
+              ],
+            ),
           ],
         ),
       ],
