@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:tepat_customer_flutter/config/routes/routes.gr.dart';
 
 class CallToActionWidget extends StatelessWidget {
   const CallToActionWidget({Key? key}) : super(key: key);
@@ -38,7 +40,9 @@ class CallToActionWidget extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(const LoginPageRoute());
+                },
                 child: Row(
                   children: [
                     const HeroIcon(
