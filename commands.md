@@ -50,3 +50,19 @@ cd android
 gradlew --refresh-dependencies
 cd ..
 ```
+
+## Batch script
+
+```
+cd android
+gradlew --refresh-dependencies
+cd ..
+
+flutter clean
+flutter pub get
+
+flutter packages pub run build_runner clean
+flutter packages pub run build_runner build --delete-conflicting-outputs
+flutter build apk --debug --flavor development --target lib/main_development.dart
+
+```
