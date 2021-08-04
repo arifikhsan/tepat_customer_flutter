@@ -14,28 +14,35 @@ class WorkTypeWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.headline3,
         ),
         const SizedBox(height: 16),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
-          child: Row(
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              const FeatureCard(
-                message: 'Pasang instalasi baru',
-                icon: HeroIcons.viewGridAdd,
-              ),
-              const SizedBox(width: 16),
-              const FeatureCard(
-                message: 'Cari korsleting listrik',
-                icon: HeroIcons.cog,
-              ),
-              const SizedBox(width: 16),
-              const FeatureCard(
-                message: 'Masalah listrik lainnya',
-                icon: HeroIcons.lightBulb,
-              ),
-            ],
-          ),
+        GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+          crossAxisCount: 3,
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            const FeatureCard(
+              message: 'Pasang instalasi baru',
+              icon: HeroIcons.viewGridAdd,
+            ),
+            const FeatureCard(
+              message: 'Perbaikan instalasi listrik',
+              icon: HeroIcons.cog,
+            ),
+            const FeatureCard(
+              message: 'Listrik tidak mau menyala',
+              icon: HeroIcons.sun,
+            ),
+            const FeatureCard(
+              message: 'Di rumah dan perkantoran',
+              icon: HeroIcons.home,
+            ),
+            const FeatureCard(
+              message: 'Masalah listrik lainnya',
+              icon: HeroIcons.lightBulb,
+            ),
+          ],
         ),
       ],
     );
@@ -68,13 +75,18 @@ class FeatureCard extends StatelessWidget {
         children: [
           HeroIcon(
             icon,
-            size: 32,
+            size: 24,
             color: Colors.blue.shade800,
           ),
           const SizedBox(height: 8),
           Text(
             message,
             textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey.shade800,
+              fontWeight: FontWeight.w400,
+            ),
           )
         ],
       ),
