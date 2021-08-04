@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:tepat_customer_flutter/config/injection/injection.dart';
 import 'package:tepat_customer_flutter/features/engineers/data/models/engineer_address_model.dart';
@@ -74,6 +75,11 @@ class _EngineersScreenState extends State<EngineersScreen> {
           ),
           child: const _EngineersBlocBuilder(),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          elevation: 2,
+          child: const HeroIcon(HeroIcons.map),
+        ),
       ),
     );
   }
@@ -134,6 +140,7 @@ class EngineersListWidget extends StatelessWidget {
           ),
         ),
         ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: engineers.length,
           separatorBuilder: (context, index) => const Divider(),
