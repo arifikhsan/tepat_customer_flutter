@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:tepat_customer_flutter/features/core/tepat_logo_widget.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:tepat_customer_flutter/features/engineers/presentation/screens/engineers_screen.dart';
+import 'package:tepat_customer_flutter/features/home/presentation/bloc/home_navigation_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,8 +19,6 @@ class _HomePageState extends State<HomePage> {
     keepPage: true,
   );
 
-  int bottomSelectedIndex = 0;
-
   static const List<Widget> pages = <Widget>[
     DashboardScreen(),
     Text('Index 2: Offers'),
@@ -26,21 +26,11 @@ class _HomePageState extends State<HomePage> {
     Text('Index 4: Pengaturan'),
   ];
 
-  void pageChanged(int index) {
-    setState(() {
-      bottomSelectedIndex = index;
-    });
-  }
+  void pageChanged(int index) {}
 
   void onBottomNavigationTapped(int index) {
-    setState(() {
-      bottomSelectedIndex = index;
-      pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.ease,
-      );
-    });
+    BlocProvider.of<HomeNavigationBloc>(context)
+        .add(HomeNavigationEvent.screenChanged(index));
   }
 
   @override
@@ -59,39 +49,58 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      // body: Center(child: pages.elementAt(selectedPageIndex)),
       body: PageView(
         controller: pageController,
         onPageChanged: pageChanged,
         children: pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: bottomSelectedIndex,
-        onTap: onBottomNavigationTapped,
-        selectedItemColor: Theme.of(context).primaryColor,
-        items: const [
-          BottomNavigationBarItem(
-            icon: HeroIcon(HeroIcons.home),
-            label: 'Beranda',
-            tooltip: 'Beranda',
-          ),
-          BottomNavigationBarItem(
-            icon: HeroIcon(HeroIcons.bookOpen),
-            label: 'Penawaran',
-            tooltip: 'Penawaran',
-          ),
-          BottomNavigationBarItem(
-            icon: HeroIcon(HeroIcons.userGroup),
-            label: 'Teknisi',
-            tooltip: 'Teknisi',
-          ),
-          BottomNavigationBarItem(
-            icon: HeroIcon(HeroIcons.adjustments),
-            label: 'Pengaturan',
-            tooltip: 'Pengaturan',
-          ),
-        ],
+      bottomNavigationBar:
+          BlocConsumer<HomeNavigationBloc, HomeNavigationState>(
+        listener: (context, state) {
+          state.map(screenAtIndex: (s) {
+            setState(() {
+              pageController.animateToPage(
+                s.index,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            });
+          });
+        },
+        builder: (context, state) {
+          return state.map(
+            screenAtIndex: (s) {
+              return BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                currentIndex: s.index,
+                onTap: onBottomNavigationTapped,
+                selectedItemColor: Theme.of(context).primaryColor,
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: HeroIcon(HeroIcons.home),
+                    label: 'Beranda',
+                    tooltip: 'Beranda',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: HeroIcon(HeroIcons.bookOpen),
+                    label: 'Penawaran',
+                    tooltip: 'Penawaran',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: HeroIcon(HeroIcons.userGroup),
+                    label: 'Teknisi',
+                    tooltip: 'Teknisi',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: HeroIcon(HeroIcons.adjustments),
+                    label: 'Pengaturan',
+                    tooltip: 'Pengaturan',
+                  ),
+                ],
+              );
+            },
+          );
+        },
       ),
     );
   }

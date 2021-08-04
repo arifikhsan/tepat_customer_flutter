@@ -5,6 +5,7 @@ import 'package:tepat_customer_flutter/config/injection/injection.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_address_model.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_model.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/bloc/best_engineer_bloc.dart';
+import 'package:tepat_customer_flutter/features/home/presentation/bloc/home_navigation_bloc.dart';
 
 class BestEngineerWidget extends StatelessWidget {
   const BestEngineerWidget({Key? key}) : super(key: key);
@@ -68,7 +69,10 @@ class BestEngineerWidget extends StatelessWidget {
               child: SizedBox.shrink(),
             ),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                BlocProvider.of<HomeNavigationBloc>(context)
+                    .add(const HomeNavigationEvent.screenChanged(2));
+              },
               child: const Text('Lihat semua →'),
             ),
           ],

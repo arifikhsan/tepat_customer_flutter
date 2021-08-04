@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tepat_customer_flutter/config/injection/injection.dart';
-import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository_impl.dart';
-import 'package:tepat_customer_flutter/features/dashboard/presentation/bloc/best_engineer_bloc.dart';
+import 'package:tepat_customer_flutter/features/home/presentation/bloc/home_navigation_bloc.dart';
 
 class AppMiddleware extends StatelessWidget {
   const AppMiddleware({required this.child, Key? key}) : super(key: key);
@@ -14,9 +13,7 @@ class AppMiddleware extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => BestEngineerBloc(
-            repository: getIt<DashboardRepositoryImpl>(),
-          ),
+          create: (context) => getIt<HomeNavigationBloc>(),
         ),
       ],
       child: child,
