@@ -1,4 +1,4 @@
-package com.example.tepatCustomerFlutter
+package com.tepat.customer
 
 import io.flutter.embedding.android.FlutterActivity
 

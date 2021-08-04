@@ -7,38 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:824263775407:android:d260d994fca3297828b05a",
+        "mobilesdk_app_id": "1:824263775407:android:d813a496be38fda828b05a",
         "android_client_info": {
-          "package_name": "com.example.tepatCustomerFlutter"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "824263775407-h2fecrsd96c1f7jl7jtvje3c6q20jqt8.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCHvGkWpor3HSl4jLQAe5tXeJCBnra2ndk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "824263775407-h2fecrsd96c1f7jl7jtvje3c6q20jqt8.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:824263775407:android:bd6b4516ba39c28328b05a",
-        "android_client_info": {
-          "package_name": "com.tepat.app_public"
+          "package_name": "com.tepat.customer"
         }
       },
       "oauth_client": [

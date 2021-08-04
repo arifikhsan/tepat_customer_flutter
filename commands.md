@@ -39,6 +39,7 @@ flutter build apk --release --flavor production --target lib/main_production.dar
 
 ```bash
 flutter pub run change_app_package_name:main com.new.package.name
+flutter pub run change_app_package_name:main com.tepat.customer
 ```
 
 ## Gradlew sync
