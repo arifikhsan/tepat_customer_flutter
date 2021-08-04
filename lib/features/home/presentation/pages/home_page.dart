@@ -5,6 +5,7 @@ import 'package:tepat_customer_flutter/features/core/tepat_logo_widget.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:tepat_customer_flutter/features/engineers/presentation/screens/engineers_screen.dart';
 import 'package:tepat_customer_flutter/features/home/presentation/bloc/home_navigation_bloc.dart';
+import 'package:tepat_customer_flutter/features/offers/presentation/screens/offers_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   static const List<Widget> pages = <Widget>[
     DashboardScreen(),
-    Text('Index 2: Offers'),
+    OffersScreen(),
     EngineersScreen(),
     Text('Index 4: Pengaturan'),
   ];
