@@ -124,13 +124,25 @@ class EngineersListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: engineers.length,
-      separatorBuilder: (context, index) => const Divider(),
-      itemBuilder: (context, index) {
-        final engineer = engineers[index];
-        return EngineerListTile(engineer: engineer);
-      },
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            'Teknisi listrik berpengalaman disekitar Anda',
+            style: Theme.of(context).textTheme.headline2,
+          ),
+        ),
+        ListView.separated(
+          shrinkWrap: true,
+          itemCount: engineers.length,
+          separatorBuilder: (context, index) => const Divider(),
+          itemBuilder: (context, index) {
+            final engineer = engineers[index];
+            return EngineerListTile(engineer: engineer);
+          },
+        ),
+      ],
     );
   }
 }
