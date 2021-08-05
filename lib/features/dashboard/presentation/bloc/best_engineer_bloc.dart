@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_model.dart';
-import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository_impl.dart';
+import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository.dart';
 import 'package:tepat_customer_flutter/features/dashboard/domain/failure/best_engineer_failure.dart';
 
 part 'best_engineer_event.dart';
@@ -16,7 +16,7 @@ class BestEngineerBloc extends Bloc<BestEngineerEvent, BestEngineerState> {
     required this.repository,
   }) : super(const BestEngineerState.initial());
 
-  final DashboardRepositoryImpl repository;
+  final DashboardRepository repository;
   StreamSubscription<List<BestEngineerModel>>? _engineerSubscription;
 
   @override

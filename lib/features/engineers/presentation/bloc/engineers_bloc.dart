@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:tepat_customer_flutter/features/engineers/data/models/engineer_model.dart';
-import 'package:tepat_customer_flutter/features/engineers/data/repositories/engineer_repository_impl.dart';
+import 'package:tepat_customer_flutter/features/engineers/data/repositories/engineer_repository.dart';
 
 part 'engineers_event.dart';
 part 'engineers_state.dart';
@@ -17,7 +17,7 @@ class EngineersBloc extends Bloc<EngineersEvent, EngineersState> {
     required this.repository,
   }) : super(const EngineersState.initial());
 
-  final EngineerRepositoryImpl repository;
+  final EngineerRepository repository;
   StreamSubscription<List<EngineerModel>>? _engineersSubscription;
 
   @override
