@@ -4,7 +4,7 @@ import 'package:tepat_customer_flutter/config/injection/injection.dart';
 import 'package:tepat_customer_flutter/features/engineers/data/models/engineer_model.dart';
 import 'package:tepat_customer_flutter/features/engineers/data/repositories/engineer_repository.dart';
 
-@injectable
+@Injectable(as: EngineerRepository)
 class EngineerRepositoryImpl implements EngineerRepository {
   final _users = getIt<FirebaseFirestore>().collection('users');
 

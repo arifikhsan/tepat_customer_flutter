@@ -4,7 +4,7 @@ import 'package:tepat_customer_flutter/config/injection/injection.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/models/best_engineer_model.dart';
 import 'package:tepat_customer_flutter/features/dashboard/data/repositories/dashboard_repository.dart';
 
-@injectable
+@Injectable(as: DashboardRepository)
 class DashboardRepositoryImpl implements DashboardRepository {
   final users = getIt<FirebaseFirestore>().collection('users');
 

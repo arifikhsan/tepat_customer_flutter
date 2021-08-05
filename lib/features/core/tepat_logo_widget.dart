@@ -17,7 +17,12 @@ class TepatLogoWidget extends StatelessWidget {
         const SizedBox(
           width: 2,
         ),
-        const Text('Tepat'),
+        const Text(
+          'Tepat',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+          ),
+        ),
       ],
     );
   }
