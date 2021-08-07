@@ -7,10 +7,6 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   auto_route: ^2.2.0
   bloc: ^7.0.0
   cloud_firestore: ^2.4.0
@@ -18,12 +14,18 @@ dependencies:
   dio: ^4.0.0
   equatable: ^2.0.3
   file_picker: ^3.0.4
+  firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
+  flutter:
+    sdk: flutter
   flutter_bloc: ^7.1.0
   flutter_hooks: ^0.18.0
+  flutter_localizations:
+    sdk: flutter
   freezed_annotation: ^0.14.3
   get_it: ^7.2.0
   google_fonts: ^2.1.0
+  google_sign_in: ^5.0.7
   heroicons: ^0.3.0
   injectable: ^1.4.1
   intl: ^0.17.0
@@ -35,12 +37,12 @@ dependencies:
   timeago: ^3.1.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   auto_route_generator: ^2.1.0
   bloc_test: ^8.1.0
   build_runner: ^2.0.6
   change_app_package_name: ^1.0.0
+  flutter_test:
+    sdk: flutter
   freezed: ^0.14.2
   injectable_generator: ^1.4.1
   json_annotation: ^4.1.0
