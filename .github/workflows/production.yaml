@@ -54,9 +54,8 @@ jobs:
         run: |
           last_commit_id=$(git rev-parse --short HEAD)
           cd build/app/outputs/flutter-apk/
-          new_apk_name=app-production-release-${last_commit_id}.apk
-          echo $new_apk_name >> $NEW_APK_NAME
-          cp app-production-release.apk $new_apk_name
+          NEW_APK_NAME=app-production-release-${last_commit_id}.apk
+          cp app-production-release.apk $NEW_APK_NAME
 
       - name: Upload APK to Telegram
         uses: appleboy/telegram-action@master
