@@ -7,7 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../features/auth/presentation/pages/login_page.dart' as _i4;
+import '../../features/auth/presentation/pages/sign_in_page.dart' as _i4;
 import '../../features/home/presentation/pages/home_page.dart' as _i3;
 import '../../features/offers/presentation/pages/offer_page.dart' as _i5;
 
@@ -22,11 +22,14 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i3.HomePage();
         }),
-    LoginPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+    SignInPageRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i4.LoginPage();
-        }),
+          return const _i4.SignInPage();
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false),
     OfferPageRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (data) {
@@ -41,7 +44,7 @@ class AppRouter extends _i1.RootStackRouter {
   @override
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(HomePageRoute.name, path: '/'),
-        _i1.RouteConfig(LoginPageRoute.name, path: '/login-page'),
+        _i1.RouteConfig(SignInPageRoute.name, path: '/sign-in-page'),
         _i1.RouteConfig(OfferPageRoute.name, path: '/offer-page')
       ];
 }
@@ -52,10 +55,10 @@ class HomePageRoute extends _i1.PageRouteInfo {
   static const String name = 'HomePageRoute';
 }
 
-class LoginPageRoute extends _i1.PageRouteInfo {
-  const LoginPageRoute() : super(name, path: '/login-page');
+class SignInPageRoute extends _i1.PageRouteInfo {
+  const SignInPageRoute() : super(name, path: '/sign-in-page');
 
-  static const String name = 'LoginPageRoute';
+  static const String name = 'SignInPageRoute';
 }
 
 class OfferPageRoute extends _i1.PageRouteInfo<OfferPageRouteArgs> {

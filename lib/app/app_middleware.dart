@@ -10,13 +10,16 @@ class AppMiddleware extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<HomeNavigationBloc>(),
-        ),
-      ],
-      child: child,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<HomeNavigationBloc>(),
+          ),
+        ],
+        child: child,
+      ),
     );
   }
 }

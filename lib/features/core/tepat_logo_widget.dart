@@ -14,13 +14,12 @@ class TepatLogoWidget extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           solid: true,
         ),
-        const SizedBox(
-          width: 2,
-        ),
-        const Text(
+        const SizedBox(width: 2),
+        Text(
           'Tepat',
           style: TextStyle(
             fontWeight: FontWeight.w800,
+            color: Theme.of(context).primaryColor,
           ),
         ),
       ],

@@ -29,6 +29,7 @@ class CounterView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
+      // ignore: avoid_dynamic_calls
       appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
       body: const Center(child: CounterText()),
       floatingActionButton: Column(

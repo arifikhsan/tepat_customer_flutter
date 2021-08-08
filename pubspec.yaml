@@ -12,6 +12,7 @@ dependencies:
   cloud_firestore: ^2.4.0
   dartz: 0.10.0-nullsafety.2
   dio: ^4.0.0
+  email_validator: ^2.0.1
   equatable: ^2.0.3
   file_picker: ^3.0.4
   firebase_auth: ^3.0.1
@@ -31,6 +32,7 @@ dependencies:
   intl: ^0.17.0
   kt_dart: ^0.9.1
   meta: ^1.7.0
+  nested: ^1.0.0
   page_transition: ^2.0.2
   paginate_firestore: ^1.0.2
   pull_to_refresh: ^2.0.0

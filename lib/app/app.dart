@@ -6,6 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tepat_customer_flutter/app/app_middleware.dart';
@@ -27,6 +28,10 @@ class App extends StatelessWidget {
         theme: ThemeData(
           // accentColor: const Color(0xFF13B9FF),
           appBarTheme: AppBarTheme(
+            backwardsCompatibility: false,
+            systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Colors.blue
+            ),
             elevation: 0,
             centerTitle: true,
             // foregroundColor: Colors.white,
@@ -55,8 +60,8 @@ class App extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 16,
+                horizontal: 16,
+                vertical: 8,
               ),
               primary: Colors.blue.shade600, // background color
               textStyle: const TextStyle(
@@ -122,9 +127,11 @@ class App extends StatelessWidget {
           ),
         ),
         localizationsDelegates: const [
+          // ignore: avoid_dynamic_calls
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
         ],
+        // ignore: avoid_dynamic_calls
         supportedLocales: AppLocalizations.supportedLocales,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),

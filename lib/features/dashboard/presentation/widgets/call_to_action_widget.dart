@@ -41,7 +41,7 @@ class CallToActionWidget extends StatelessWidget {
               const SizedBox(height: 24),
               OutlinedButton(
                 onPressed: () {
-                  AutoRouter.of(context).push(const LoginPageRoute());
+                  AutoRouter.of(context).push(const SignInPageRoute());
                 },
                 child: Row(
                   children: [
