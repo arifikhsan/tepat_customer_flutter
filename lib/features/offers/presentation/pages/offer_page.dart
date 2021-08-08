@@ -19,11 +19,12 @@ class OfferPage extends StatelessWidget {
       create: (context) => getIt<OffersBloc>()..add(OffersEvent.getOffer(id)),
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.home),
-          ),
+          // leading: IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.home),
+          // ),
           title: const TepatLogoWidget(),
+          // actions: [const Icon(Icons.home)],
         ),
         body: BlocBuilder<OffersBloc, OffersState>(
           builder: (context, state) {
