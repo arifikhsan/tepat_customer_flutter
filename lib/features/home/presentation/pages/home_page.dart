@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     DashboardScreen(),
     OffersScreen(),
     EngineersScreen(),
-    Text('Index 4: Pengaturan'),
+    Text('Index 4: Chat'),
   ];
 
   void pageChanged(int index) {}
@@ -39,10 +39,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: IconButton(
-        //   onPressed: () {},
-        //   icon: const Icon(Icons.menu),
-        // ),
         title: const TepatLogoWidget(),
         actions: [
           IconButton(
@@ -96,8 +92,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                   BottomNavigationBarItem(
                     icon: HeroIcon(HeroIcons.adjustments),
-                    label: 'Pengaturan',
-                    tooltip: 'Pengaturan',
+                    label: 'Chat',
+                    tooltip: 'Chat',
                   ),
                 ],
               );

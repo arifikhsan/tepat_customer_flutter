@@ -30,3 +30,38 @@ jobs:
 
       - name: Build debug flavor production
         run: flutter build apk --debug --flavor production --target lib/main_production.dart
+
+      - name: Setup Keystore
+        env:
+          SIGNING_KEY: ${{ secrets.ANDROID_KEYSTORE }}
+        run: |
+          echo $SIGNING_KEY | base64 -di > android/app/key.jks
+          pwd
+          ls android/app
+
+      - name: build release
+        env:
+          ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+          ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEYSTORE_PATH: key.jks
+        run: |
+          flutter build apk --release --flavor production --target lib/main_production.dart --target-platform android-arm64
+
+      - name: Rename APK
+        run: |
+          last_commit_id=$(git rev-parse --short HEAD)
+          cd build/app/outputs/flutter-apk/
+          new_apk_name=app-production-release-${last_commit_id}.apk
+          echo $new_apk_name >> $NEW_APK_NAME
+          cp app-production-release.apk $new_apk_name
+
+      - name: Upload APK to Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.SKYNET_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: '
+            New Release!!!
+            Commit name: ${{ github.event.head_commit.message }}'
+          document: ${{ github.workspace }}/build/app/outputs/flutter-apk/${{ env.NEW_APK_NAME }}
