@@ -51,11 +51,13 @@ jobs:
           flutter build apk --release --flavor production --target lib/main_production.dart --target-platform android-arm64
 
       - name: Rename APK
+        id: random-name-generator
         run: |
           last_commit_id=$(git rev-parse --short HEAD)
           cd build/app/outputs/flutter-apk/
           NEW_APK_NAME=app-production-release-${last_commit_id}.apk
           cp app-production-release.apk $NEW_APK_NAME
+          echo "::set-output name=NEW_NAME::${NEW_APK_NAME}"
 
       - name: Upload APK to Telegram
         uses: appleboy/telegram-action@master
@@ -65,4 +67,4 @@ jobs:
           message: '
             New Release!!!
             Commit name: ${{ github.event.head_commit.message }}'
-          document: ${{ github.workspace }}/build/app/outputs/flutter-apk/${{ env.NEW_APK_NAME }}
+          document: ${{ github.workspace }}/build/app/outputs/flutter-apk/${{ steps.random-name-generator.outputs.NEW_NAME }}
