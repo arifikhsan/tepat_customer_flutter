@@ -5,6 +5,7 @@ import 'package:tepat_customer_flutter/features/core/tepat_logo_widget.dart';
 import 'package:tepat_customer_flutter/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:tepat_customer_flutter/features/engineers/presentation/screens/engineers_screen.dart';
 import 'package:tepat_customer_flutter/features/home/presentation/bloc/home_navigation_bloc.dart';
+import 'package:tepat_customer_flutter/features/home/presentation/widgets/drawer_widget.dart';
 import 'package:tepat_customer_flutter/features/offers/presentation/screens/offers_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,10 +39,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.menu),
+        // ),
         title: const TepatLogoWidget(),
         actions: [
           IconButton(
@@ -50,6 +51,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+      drawer: const DrawerWidget(),
       body: PageView(
         controller: pageController,
         onPageChanged: pageChanged,
@@ -106,3 +108,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

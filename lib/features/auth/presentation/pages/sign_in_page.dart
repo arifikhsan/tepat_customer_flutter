@@ -13,6 +13,7 @@ class SignInPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
             children: [
               const SizedBox(height: 16),
               const _CallToAction(),

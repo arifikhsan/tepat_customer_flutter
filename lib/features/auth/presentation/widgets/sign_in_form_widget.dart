@@ -64,6 +64,7 @@ class _SignInFormWidgetState extends State<SignInFormWidget> {
             icon: const HeroIcon(HeroIcons.login),
             label: const Text('Masuk'),
             onPressed: () {
+              // ignore: avoid_print
               print('masuk');
             },
           ),
@@ -92,6 +93,7 @@ class _SignInFormWidgetState extends State<SignInFormWidget> {
             icon: const HeroIcon(HeroIcons.identification),
             label: const Text('Buat akun baru'),
             onPressed: () {
+              // ignore: avoid_print
               print('daftar');
             },
           ),
