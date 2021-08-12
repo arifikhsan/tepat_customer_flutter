@@ -24,11 +24,13 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> pages = <Widget>[
     DashboardScreen(),
     OffersScreen(),
-    EngineersScreen(),
+    EngineersScreen(), // diurutkan berdasarkan jarak
     Text('Index 4: Chat'),
   ];
 
-  void pageChanged(int index) {}
+  void pageChanged(int index) {
+    onBottomNavigationTapped(index);
+  }
 
   void onBottomNavigationTapped(int index) {
     BlocProvider.of<HomeNavigationBloc>(context)

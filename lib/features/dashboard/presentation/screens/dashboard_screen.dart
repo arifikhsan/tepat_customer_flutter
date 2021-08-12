@@ -16,7 +16,7 @@ class DashboardScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Temukan teknisi listrik yang cepat dan tanggap',
+              'Temukan teknisi listrik disekitarmu dengan cepat',
               style: Theme.of(context).textTheme.headline1,
             ),
             const SizedBox(height: 32),
